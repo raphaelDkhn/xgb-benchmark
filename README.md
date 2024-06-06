@@ -1,10 +1,13 @@
-# Prover benchmarks on XGBoost
+# ZKBoost Benchmark on Stone & Platinum
 
-This repository provides benchmarks for XGBoost models across varying numbers of trees and depths. To reproduce these models, refer to the [Jupyter notebook](prover-benchmarks/xgb/xgb.ipynb). After reproducing, you can use [Giza-CLI](https://docs.gizatech.xyz/products/platform/resources/transpile) to transpile the serialized models into Cairo.
+This repository provides benchmarks for XGBoost models across varying numbers of trees and depths. 
+
+To reproduce these models, refer to the [Jupyter notebook](xgb.ipynb). After reproducing, you can use [Giza-CLI](https://docs.gizatech.xyz/products/platform/resources/transpile) to transpile the serialized models into Cairo.
 
 ## Performance Metrics
 
 The table below summarizes the performance metrics for different configurations of the XGBoost model with two provers: Stone and Platinum.
+
 Models are named following their configuration: number of trees and depth. For example, an XGBoost model with 5 trees and depth 4 is named `xgb_t5_d4`.
 
 All benchmarks have been conducted on an `e2-highmem-4` machine, equipped with an Intel Broadwell CPU on x86/64 architecture.
