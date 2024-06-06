@@ -15,11 +15,11 @@ All benchmarks have been conducted on an `e2-highmem-4` machine, equipped with a
 
 | Model         | Steps (proof_mode) | Proving Time in Stone | Verifying Time in Stone | Proving Time in Platinum | Verifying Time in Platinum | Verifying Onchain |
 | ------------- | ------------------ | --------------------- | ----------------------- | ------------------------ | -------------------------- | ----------------- |
-| `xgb_t5_d4`   | 8192               | 0m16.732s             | 0m0.243s                | 0m1.851s                 | 0m0.038s                   | TODO              |
-| `xgb_t5_d6`   | 8192               | 0m16.067s             | 0m0.294s                | 0m2.275s                 | 0m0.037s                   | TODO              |
-| `xgb_t20_d6`  | 32768              | 1m1.727s              | 0m0.539s                | 0m7.069s                 | 0m0.119s                   | TODO              |
-| `xgb_t70_d6`  | 131072             | 4m9.207s              | 0m1.163s                | 0m29.017s                | 0m0.465s                   | TODO              |
-| `xgb_t200_d4` | 131072             | 4m9.312s              | 0m1.266s                | 0m29.871s                | 0m0.468s                   | TODO              |
+| `xgb_t5_d4`   | 8192               | 0m16.732s             | 0m0.243s                | 0m1.851s                 | 0m0.038s                   | ⏳                 |
+| `xgb_t5_d6`   | 8192               | 0m16.067s             | 0m0.294s                | 0m2.275s                 | 0m0.037s                   | ⏳                 |
+| `xgb_t20_d6`  | 32768              | 1m1.727s              | 0m0.539s                | 0m7.069s                 | 0m0.119s                   | ⏳                 |
+| `xgb_t70_d6`  | 131072             | 4m9.207s              | 0m1.163s                | 0m29.017s                | 0m0.465s                   | ⏳                 |
+| `xgb_t200_d4` | 131072             | 4m9.312s              | 0m1.266s                | 0m29.871s                | 0m0.468s                   | ⏳                 |
 
 ## Stone 
 
