@@ -2,7 +2,8 @@
 
 This repository provides benchmarks for XGBoost models across varying numbers of trees and depths. 
 
-To reproduce these models, refer to the [Jupyter notebook](xgb.ipynb). After reproducing, you can use [Giza-CLI](https://docs.gizatech.xyz/products/platform/resources/transpile) to transpile the serialized models into Cairo.
+XGBoost models have been serialized in `serialized_models` directory. To reproduce these models, refer to the [Jupyter notebook](xgb.ipynb). 
+After reproducing, you can use [Giza-CLI](https://docs.gizatech.xyz/products/platform/resources/transpile) to transpile the serialized models into Cairo.
 
 ## Performance Metrics
 
