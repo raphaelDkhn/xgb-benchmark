@@ -13,13 +13,13 @@ Models are named following their configuration: number of trees and depth. For e
 
 All benchmarks have been conducted on an `e2-highmem-4` machine, equipped with an Intel Broadwell CPU on x86/64 architecture.
 
-| Model         | Steps (proof_mode) | Proving Time in Stone | Verifying Time in Stone | Proving Time in Platinum | Verifying Time in Platinum | Verifying Onchain |
-| ------------- | ------------------ | --------------------- | ----------------------- | ------------------------ | -------------------------- | ----------------- |
-| `xgb_t5_d4`   | 8192               | 0m16.732s             | 0m0.243s                | 0m1.851s                 | 0m0.038s                   | ⏳                 |
-| `xgb_t5_d6`   | 8192               | 0m16.067s             | 0m0.294s                | 0m2.275s                 | 0m0.037s                   | ⏳                 |
-| `xgb_t20_d6`  | 32768              | 1m1.727s              | 0m0.539s                | 0m7.069s                 | 0m0.119s                   | ⏳                 |
-| `xgb_t70_d6`  | 131072             | 4m9.207s              | 0m1.163s                | 0m29.017s                | 0m0.465s                   | ⏳                 |
-| `xgb_t200_d4` | 131072             | 4m9.312s              | 0m1.266s                | 0m29.871s                | 0m0.468s                   | ⏳                 |
+| Model         | Steps (proof_mode) | Proving (Stone)         | Verifying (Stone)       | Proving (Platinum)       | Verifying (Platinum)    |
+| ------------- | ------------------ | ----------------------- | ----------------------- | ------------------------ | ----------------------- |
+| `xgb_t5_d4`   | 8192               | 0m16.732s - 0.458224 GB | 0m0.243s  - 0.018632 GB | 0m1.851s   - 0.250984 GB | 0m0.038s  - 0.00554 GB  |
+| `xgb_t5_d6`   | 8192               | 0m16.067s - 0.465664 GB | 0m0.294s  - 0.023216 GB | 0m2.275s   - 0.251788 GB | 0m0.037s  - 0.005388 GB |
+| `xgb_t20_d6`  | 32768              | 1m1.727s  - 1.809264 GB | 0m0.539s  - 0.044592 GB | 0m7.069s   - 0.903456 GB | 0m0.119s  - 0.00964 GB  |
+| `xgb_t70_d6`  | 131072             | 4m9.207s  - 7.066836 GB | 0m1.163s  - 0.104848 GB | 0m29.017s  - 3.49316 GB  | 0m0.465s  - 0.0249 GB   |
+| `xgb_t200_d4` | 131072             | 4m9.312s  - 7.068941 GB | 0m1.266s  - 0.116316 GB | 0m29.871s  - 3.52598 GB  | 0m0.468s  - 0.025004 GB |
 
 ## Stone 
 
@@ -28,7 +28,7 @@ First, install [Stone prover](https://github.com/starkware-libs/stone-prover), t
 To prove a model run the following command:
 ```bash
 MODEL=t5_d4 #Change the model here
-time cpu_air_prover \
+/usr/bin/time -v cpu_air_prover \
   --out_file=proofs/stone/xgb_${MODEL}_proof.json \
   --private_input_file=prover_inputs/xgb_${MODEL}/xgb_${MODEL}_private_input.json \
   --public_input_file=prover_inputs/xgb_${MODEL}/xgb_${MODEL}_public_input.json \
@@ -40,7 +40,7 @@ time cpu_air_prover \
 To verify a model, run the following command
 ```bash
 MODEL=t5_d4 #Change the model here
-time cpu_air_verifier \
+/usr/bin/time -v cpu_air_verifier \
   --in_file=proofs/stone/xgb_${MODEL}_proof.json && echo "Successfully verified proof."
 ```
 
@@ -68,7 +68,7 @@ cargo install --features=cli,instruments,parallel --git https://github.com/lambd
 To prove a model run the following command:
 ```bash
 MODEL=t5_d4 #Change the model here
-time platinum-prover prove \
+/usr/bin/time -v platinum-prover prove \
 prover_inputs/xgb_${MODEL}/xgb_${MODEL}_trace.json \
 prover_inputs/xgb_${MODEL}/xgb_${MODEL}_memory.json \
 proofs/platinum/xgb_${MODEL}.proof 
@@ -77,6 +77,6 @@ proofs/platinum/xgb_${MODEL}.proof
 To verify a model, run the following command:
 ```bash
 MODEL=t5_d4 #Change the model here
-time platinum-prover verify \
+/usr/bin/time -v platinum-prover verify \
 proofs/platinum/xgb_${MODEL}.proof 
 ```
